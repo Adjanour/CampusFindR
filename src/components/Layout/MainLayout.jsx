@@ -1,17 +1,15 @@
-// src/components/AppLayout.tsx
 import React from "react";
 import { NavbarX } from "../Navbar";
 import useAuth from "@/hooks/useAuth";
 import { Sidebar } from "../Sidebar";
 
-export const MainLayout: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const MainLayout = ({ children }) => {
   const { currentUser, logout } = useAuth();
+
   return (
     <div className="main-light min-h-screen flex flex-col">
       <Sidebar />
-      <main className="layout" >
+      <main className="layout">
         <div style={{ marginBottom: "5px", marginTop: "5px" }} className="w-full">
           <NavbarX
             displayName={currentUser?.displayName}
@@ -22,7 +20,6 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({
         <div>
           {children}
         </div>
-        
       </main>
     </div>
   );

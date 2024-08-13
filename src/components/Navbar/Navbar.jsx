@@ -14,12 +14,7 @@ import {
 } from "@nextui-org/react";
 import africoda from "@/assets/africoda.png";
 
-interface NavbarProps {
-  displayName: string|null|undefined;
-  avatarUrl: string|null|undefined;
-  onLogout: () => void;
-}
-export const NavbarX: React.FC<NavbarProps> = ({displayName,avatarUrl,onLogout}) => {
+export const NavbarX = ({ displayName, avatarUrl, onLogout }) => {
   return (
     <Navbar className="rounded-lg" isBordered position="sticky">
       <NavbarBrand>
@@ -33,7 +28,7 @@ export const NavbarX: React.FC<NavbarProps> = ({displayName,avatarUrl,onLogout})
             Features
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={window.location.href == "#"}>
+        <NavbarItem isActive={window.location.href === "#"}>
           <Link href="#" aria-current="page" color="secondary">
             Customers
           </Link>
@@ -55,7 +50,11 @@ export const NavbarX: React.FC<NavbarProps> = ({displayName,avatarUrl,onLogout})
               color="secondary"
               name="Jason Hughes"
               size="sm"
-              src={avatarUrl?avatarUrl:"https://avatars.dicebear.com/api/avataaars/jason-hughes.svg"}
+              src={
+                avatarUrl
+                  ? avatarUrl
+                  : "https://avatars.dicebear.com/api/avataaars/jason-hughes.svg"
+              }
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="faded">
@@ -68,8 +67,14 @@ export const NavbarX: React.FC<NavbarProps> = ({displayName,avatarUrl,onLogout})
             <DropdownItem key="system">System</DropdownItem>
             <DropdownItem key="configurations">Configurations</DropdownItem>
             <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem as="button" onClick={onLogout} key="logout" color="danger" className="bg-red-500">
-                Logout
+            <DropdownItem
+              as="button"
+              onClick={onLogout}
+              key="logout"
+              color="danger"
+              className="bg-red-500"
+            >
+              Logout
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
